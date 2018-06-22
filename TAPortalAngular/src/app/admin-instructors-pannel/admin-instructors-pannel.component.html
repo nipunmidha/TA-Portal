@@ -1,0 +1,21 @@
+<legend style="font-weight: bold">
+  All Instructors
+</legend>
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th scope="col">Email</th>
+    <th scope="col">First Name</th>
+    <th scope="col">Last Name</th>
+    <th scope="col">School</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let instructor of instructors">
+    <td>{{instructor.email}}</td>
+    <td>{{instructor.firstName}}</td>
+    <td>{{instructor.lastName}}</td>
+    <td>{{instructor.school.name}}</td>
+  </tr>
+  </tbody>
+</table>

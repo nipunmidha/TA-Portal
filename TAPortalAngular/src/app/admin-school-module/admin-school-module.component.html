@@ -1,0 +1,59 @@
+<legend style="font-weight: bold">
+  All Schools
+</legend>
+<div class="alert alert-danger"  *ngIf="addingError">
+  <strong>Error!</strong> There was some error adding the school. Please retry
+</div>
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th scope="col">Name</th>
+    <th scope="col">Email Domain</th>
+    <th scope="col">City</th>
+  </tr>
+    <th scope="col" >
+      <div *ngIf="name.invalid && (name.dirty || name.touched)"
+           class="alert alert-danger">
+        <div *ngIf="name.errors.required">
+          Name is required.
+        </div>
+      </div>
+      <input [(ngModel)]="school.name" type="text" placeholder="School Name" class="form-control"
+             required  #name="ngModel">
+    </th>
+    <th scope="col">
+      <div *ngIf="domain.invalid && (domain.dirty || domain.touched)"
+           class="alert alert-danger">
+        <div *ngIf="domain.errors.required">
+          Email Doamin is required.
+        </div>
+      </div>
+      <input required [(ngModel)]="school.emailDomain" type="text" placeholder="Email Domain" class="form-control"
+             #domain = "ngModel">
+    </th>
+    <th scope="col" >
+      <input [(ngModel)]="school.city" type="text" placeholder="City" class="form-control" >
+    </th>
+    <th scope="col" >
+      <a class="btn btn-primary" (click)="addSchool(school)" *ngIf="!isEdit"><i class="fa fa-plus">
+      </i></a>
+      <a class="btn btn-success" *ngIf="isEdit" (click)="updateSchool(school)" ><i class="fa fa-clipboard-check">
+      </i></a>
+    </th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let school of schools">
+    <td>{{school.name}}</td>
+    <td>{{school.emailDomain}}</td>
+    <td>{{school.city}}</td>
+    <td>
+      <a class=" btn btn-warning" (click)="editSchool(school)">
+        <i class="fa fa-edit"></i>
+      </a>
+      <a class="btn btn-danger" (click)="deleteSchool(school._id)">
+        <i class="fa fa-trash"></i>
+      </a>
+    </td>
+  </tr>
+  </tbody>
+</table>

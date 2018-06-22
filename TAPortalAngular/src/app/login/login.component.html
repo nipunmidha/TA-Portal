@@ -1,0 +1,49 @@
+<br/>
+<div class="container-fluid">
+  <div class="bg">
+  <div class="row justify-content-center align-self-center">
+    <div class="col-md-4 col-md-offset-4">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h4 class="text-center">
+            <b>LOGIN</b></h4>
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="btn btn-dark active"><i class="fa fa-envelope"></i></span>
+              </div>
+              <input type="text" class="form-control" [(ngModel)]="user.email" placeholder="Email" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="btn btn-dark active"><i class="fa fa-lock"></i></span>
+              </div>
+              <input type="password" class="form-control" [(ngModel)]="user.password" placeholder="Password" />
+            </div>
+          </div>
+          <div class="alert alert-danger"  *ngIf="userFail">
+            <strong>Error!</strong> Please enter Username.
+          </div>
+          <div class="alert noPassword alert-danger"  *ngIf="passFail">
+            <strong>Error!</strong> Please enter password.
+          </div>
+          <div class="alert alert-danger"  *ngIf="loginFailed">
+            <strong>Error!</strong> Incorrect Credentials.
+          </div>
+          <button  class="btn btn-sm btn-primary btn-block" (click)="login(user)"
+                   role="button">
+            <b>Login</b>
+          </button>
+          <div >
+            <a  style="float:left" routerLink="/register">Register</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+

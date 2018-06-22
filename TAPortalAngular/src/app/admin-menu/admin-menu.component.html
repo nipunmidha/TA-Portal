@@ -1,0 +1,43 @@
+<div class="menubar">
+<ul class="list-group">
+
+  <a routerLink="/admin/instructor"  [ngClass]="{'press': pressedButton === 'instructor'}">
+    <li class="list-group-item webdev" [ngClass]="{'press': pressedButton === 'instructor'}">
+    Instructors
+    </li>
+  </a>
+  <a routerLink="/admin/applicant" [ngClass]="{'press': pressedButton === 'applicant'}" >
+    <li class="list-group-item webdev" [ngClass]="{'press': pressedButton === 'applicant'}">
+      Applicants
+    </li>
+  </a>
+  <a routerLink="/admin/skill" [ngClass]="{'press': pressedButton === 'skill'}">
+    <li class="list-group-item webdev" [ngClass]="{'press': pressedButton === 'skill'}">
+       Applicants Skills
+    </li>
+  </a>
+  <a routerLink="/admin/application" [ngClass]="{'press': pressedButton === 'application'}">
+    <li class="list-group-item webdev" [ngClass]="{'press': pressedButton === 'application'}">
+        Applications
+    </li>
+  </a>
+  <a routerLink="/admin/position" [ngClass]="{'press': pressedButton === 'position'}">
+    <li class="list-group-item webdev" [ngClass]="{'press': pressedButton === 'position'}">
+      Positions
+    </li>
+  </a>
+  <a routerLink="/admin/school" [ngClass]="{'press': pressedButton === 'school'}">
+    <li class="list-group-item webdev" [ngClass]="{'press': pressedButton === 'school'}">
+      Schools
+    </li>
+  </a>
+  <a routerLink="/admin/course" [ngClass]="{'press': pressedButton === 'course'}">
+    <li class="list-group-item webdev" [ngClass]="{'press': pressedButton === 'course'}">
+      Courses
+    </li>
+  </a>
+</ul>
+  <br/>
+  <br/>
+</div>
+
