@@ -37,4 +37,15 @@ export class SchoolServiceClient {
       }
     });
   }
+  searchSchool(name) {
+    const school = {name}
+    return fetch(this.url + '/api/school/search', {
+      body: JSON.stringify(school),
+      credentials: 'include',
+      method: 'post',
+      headers: {
+        'content-type': 'application/json'
+      }
+    });
+  }
 }

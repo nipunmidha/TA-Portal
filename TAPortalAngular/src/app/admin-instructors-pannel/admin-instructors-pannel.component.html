@@ -5,17 +5,82 @@
   <thead>
   <tr>
     <th scope="col">Email</th>
+    <th scope="col">Password</th>
     <th scope="col">First Name</th>
     <th scope="col">Last Name</th>
     <th scope="col">School</th>
   </tr>
+    <!--<div *ngIf="email.invalid && (email.dirty || email.touched)"-->
+         <!--class="alert alert-danger">-->
+      <!--<div *ngIf="email.errors.required">-->
+        <!--Email is required.-->
+      <!--</div>-->
+      <!--<div *ngIf="email.errors.invalid">-->
+       <!--Enter valid email-->
+      <!--</div>-->
+    <!--</div>-->
+  <th scope="col">
+    <input  [(ngModel)]="instructor.email" type="email" placeholder="Email" class="form-control"
+            required #password = "ngModel">
+  </th>
+  <th scope="col">
+    <input  [(ngModel)]="instructor.password" type="password" placeholder="Password" class="form-control"
+           required #password = "ngModel" *ngIf="!isEdit">
+    <input  [(ngModel)]="instructor.password" type="password" placeholder="Password" class="form-control"
+            *ngIf="isEdit">
+  </th>
+  <!--<th>-->
+    <!--<input [(ngModel)]="instructor.email" type="email" placeholder="Email" class="form-control"-->
+           <!--required  #email="ngModel"  >-->
+  <!--</th>-->
+  <th scope="col">
+    <input  [(ngModel)]="instructor.firstName" type="text" placeholder="First Name" class="form-control"
+           #domain = "ngModel">
+  </th>
+  <th scope="col" >
+    <input [(ngModel)]="instructor.lastName" type="text" placeholder="Last Name" class="form-control" >
+  </th>
+  <th scope="col" >
+    <!--<div *ngIf="school.invalid && (school.dirty || school.touched)"-->
+         <!--class="alert alert-danger">-->
+      <!--<div *ngIf="school.errors.required">-->
+        <!--School is required.-->
+      <!--</div>-->
+    <!--</div>-->
+    <input [(ngModel)]="instructor.school" type="text" placeholder="School" required class="form-control"
+           #school="ngModel" (input)="schoolChange(instructor.school)">
+    <div *ngIf="results.length >0">
+      <ul class="list-group" >
+        <li class="list-group-item" *ngFor="let school of results"
+            (click)="selectSchool(school)">
+          {{school.name}}</li>
+      </ul>
+    </div>
+  </th>
+  <th scope="col" >
+    <a class="btn btn-primary" (click)="addInstructor(instructor)" *ngIf="!isEdit"><i class="fa fa-plus">
+    </i></a>
+    <a class="btn btn-success" *ngIf="isEdit" (click)="updateInstructor(instructor)" ><i class="fa fa-clipboard-check">
+    </i></a>
+  </th>
   </thead>
   <tbody>
   <tr *ngFor="let instructor of instructors">
     <td>{{instructor.email}}</td>
+    <td id="hiddenPass"> Hidden Password</td>
     <td>{{instructor.firstName}}</td>
     <td>{{instructor.lastName}}</td>
     <td>{{instructor.school.name}}</td>
+    <td>
+      <div class="btn-group">
+        <a class=" btn btn-warning" (click)="editInstructor(instructor)">
+           <i class="fa fa-edit"></i>
+        </a>
+        <a class="btn btn-danger" (click)="deleteInstructor(instructor._id)">
+          <i class="fa fa-trash"></i>
+        </a>
+      </div>
+    </td>
   </tr>
   </tbody>
 </table>

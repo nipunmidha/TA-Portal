@@ -12,22 +12,22 @@
     <th scope="col">City</th>
   </tr>
     <th scope="col" >
-      <div *ngIf="name.invalid && (name.dirty || name.touched)"
-           class="alert alert-danger">
-        <div *ngIf="name.errors.required">
-          Name is required.
-        </div>
-      </div>
+      <!--<div *ngIf="name.invalid && (name.dirty || name.touched)"-->
+           <!--class="alert alert-danger">-->
+        <!--<div *ngIf="name.errors.required">-->
+          <!--Name is required.-->
+        <!--</div>-->
+      <!--</div>-->
       <input [(ngModel)]="school.name" type="text" placeholder="School Name" class="form-control"
              required  #name="ngModel">
     </th>
     <th scope="col">
-      <div *ngIf="domain.invalid && (domain.dirty || domain.touched)"
-           class="alert alert-danger">
-        <div *ngIf="domain.errors.required">
-          Email Doamin is required.
-        </div>
-      </div>
+      <!--<div *ngIf="domain.invalid && (domain.dirty || domain.touched)"-->
+           <!--class="alert alert-danger">-->
+        <!--<div *ngIf="domain.errors.required">-->
+          <!--Email Domain is required.-->
+        <!--</div>-->
+      <!--</div>-->
       <input required [(ngModel)]="school.emailDomain" type="text" placeholder="Email Domain" class="form-control"
              #domain = "ngModel">
     </th>
