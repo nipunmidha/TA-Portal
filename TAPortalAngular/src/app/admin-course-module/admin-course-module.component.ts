@@ -1,20 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import {InstructorServiceClient} from '../services/instrcutor.service.client';
-import {Instructor} from '../models/instructor.model.client';
 import {SchoolServiceClient} from '../services/school.service.client';
+import {InstructorServiceClient} from '../services/instrcutor.service.client';
 import {School} from '../models/school.model.client';
+import {Course} from '../models/course.model.client';
+import {CourseServiceClient} from '../services/course.service.client';
 
 @Component({
-  selector: 'app-admin-instructors-pannel',
-  templateUrl: './admin-instructors-pannel.component.html',
-  styleUrls: ['./admin-instructors-pannel.component.css']
+  selector: 'app-admin-course-module',
+  templateUrl: './admin-course-module.component.html',
+  styleUrls: ['./admin-course-module.component.css']
 })
-export class AdminInstructorsPannelComponent implements OnInit {
+export class AdminCourseModuleComponent implements OnInit {
 
-  constructor(private service: InstructorServiceClient,
+  constructor(private service: CourseServiceClient,
               private schoolService: SchoolServiceClient) { }
-  instructors: Instructor[] = [];
-  instructor: Instructor = new Instructor();
+  instructors: Course[] = [];
+  instructor: Course = new Course();
   results: School[] = [];
   instructorSchool: School = new School();
   addingError;
@@ -24,8 +25,8 @@ export class AdminInstructorsPannelComponent implements OnInit {
     this.findAllInstructor();
   }
   findAllInstructor() {
-    this.service.findAllInstructors()
-    .then(users => this.instructors = users);
+    this.service.findAllCourses()
+      .then(users => this.instructors = users);
   }
   schoolChange(name) {
     if (name.length > 2 ) {
@@ -36,10 +37,10 @@ export class AdminInstructorsPannelComponent implements OnInit {
               .then(schools => this.results = schools);
           }
         });
-       }
-       if (name.length === 2) {
-         this.results = [];
-       }
+    }
+    if (name.length === 2) {
+      this.results = [];
+    }
   }
   selectSchool(school) {
     this.instructorSchool = school;
@@ -50,10 +51,10 @@ export class AdminInstructorsPannelComponent implements OnInit {
   addInstructor( instructor) {
     this.addingError = false;
     instructor.school = this.instructorSchool;
-    this.service.createInstructor(instructor)
+    this.service.createCourse(instructor)
       .then(res => {
         if (res.status === 200) {
-          this.instructor = new Instructor();
+          this.instructor = new Course();
           this.findAllInstructor();
         } else {
           this.addingError = true;
@@ -61,47 +62,41 @@ export class AdminInstructorsPannelComponent implements OnInit {
       });
   }
   deleteInstructor(id) {
-    this.service.deleteInstructor(id)
+    this.service.deleteCourse(id)
       .then(() => this.findAllInstructor());
   }
   editInstructor(instructor) {
     this.instructor._id = instructor._id;
-    this.instructor.email = instructor.email;
-    this.instructor.firstName = instructor.firstName;
-    this.instructor.lastName = instructor.lastName;
+    this.instructor.courseNumber = instructor.courseNumber;
+    this.instructor.name = instructor.name;
     this.instructor.school = instructor.school.name;
     this.isEdit = true;
   }
   updateInstructor(instructor) {
-
     if (this.isSet) {
       const ins = {
-        email: instructor.email,
-        password: instructor.password,
-        firstName: instructor.firstName,
-        lastName: instructor.lastName,
+        name: instructor.email,
+        courseNumber: instructor.courseNumber,
         _id: instructor._id,
         school: this.instructorSchool._id };
-      this.service.updateInstructor(ins)
+      this.service.updateCourse(ins)
         .then(res => {
           if (res.status === 200) {
-            this.instructor = new Instructor();
+            this.instructor = new Course();
             this.isEdit = false;
             this.isSet = false;
             this.findAllInstructor();
           }
         });
     } else {
-      const ins = new Instructor();
-      ins.email = instructor.email;
-      ins.password = instructor.password;
-      ins.firstName = instructor.firstName;
-      ins.lastName = instructor.lastName;
+      const ins = new Course();
+      ins.name = instructor.email;
+      ins.courseNumber = instructor.courseNumber;
       ins._id = instructor._id;
-      this.service.updateInstructor(ins)
+      this.service.updateCourse(ins)
         .then(res => {
           if (res.status === 200) {
-            this.instructor = new Instructor();
+            this.instructor = new Course();
             this.isEdit = false;
             this.isSet = false;
             this.findAllInstructor();

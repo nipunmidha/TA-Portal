@@ -1,0 +1,83 @@
+<div class="container">
+  <div class="row justify-content-center align-self-center ">
+    <div class="col-md-10">
+      <div class="error alert-danger fade in"  style="display: none;">
+        <strong>Error!</strong>Profile Not Updated.
+      </div>
+      <div class="alert alert-success"  *ngIf="updateS">
+        <strong>Success!</strong>Profile Updated.
+      </div>
+      <div>
+        <h2>User profile</h2>
+      </div>
+      <br/>
+      <div class="alert alert-danger"  *ngIf="sessionOut">
+        <strong>Session Expired!</strong>Please login.
+        <a class="float-md-right" routerLink="/login">Login</a>
+      </div>
+      <div *ngIf="!sessionOut">
+
+
+        <div class="form-group row">
+          <label class="col-md-4 col-form-label" for="emailFld">Email Address</label>
+          <div class="col-md-4">
+            <div class="input-group">
+              <div class="input-group-addon">
+                <a class="btn btn-dark active">  <i class="fa fa-envelope"></i>
+                </a>
+              </div>
+              <input id="emailFld" [(ngModel)]="user.email" name="Email Address" type="text"
+                     placeholder="Email Address" class="form-control input-md" disabled>
+
+            </div>
+
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-4 col-form-label" for="firstNameFld">First Name</label>
+          <div class="col-md-4">
+            <div class="input-group">
+              <div class="input-group-addon">
+                <a class="btn btn-dark active"> <i class="fa fa-align-justify"></i>
+                </a>
+              </div>
+              <input [(ngModel)]="user.firstName" id="firstNameFld" name="First Name" type="text"
+                     placeholder="First Name" class="form-control input-md">
+            </div>
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group row">
+          <label class="col-md-4 col-form-label" for="lastNameFld">Last Name</label>
+          <div class="col-md-4">
+            <div class="input-group">
+              <div class="input-group-addon">
+                <a class="btn btn-dark active">  <i class="fa fa-align-justify"></i>
+                </a>
+              </div>
+              <input id="lastNameFld" [(ngModel)]="user.lastName" name="Secondary Occupation (if any)" type="text"
+                     placeholder="Last Name" class="form-control input-md">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-4 control-label" ></label>
+          <div class="col-md-4">
+            <a (click)="update(user)" id="updatebtn" type="button" class="btn btn-success btn-block">Update</a>
+            <a  (click)="logout()" class="btn btn-danger btn-block"
+                type="button">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+

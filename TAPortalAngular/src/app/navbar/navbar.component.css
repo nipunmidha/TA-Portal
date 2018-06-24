@@ -1,0 +1,14 @@
+.btn-link
+{
+  border: black;
+  cursor: pointer;
+}
+
+#nav {
+  font-family: 'Lobster', cursive;
+  font-weight: bolder;
+  font-size: x-large;
+}
+.navbar{
+  z-index: 100;
+}

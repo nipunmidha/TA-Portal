@@ -1,0 +1,121 @@
+<div class="alert alert-danger"  *ngIf="!isIns">
+  <strong>Session Expired!</strong> Please login.
+  <a class="float-md-right" routerLink="/login">Login</a>
+</div>
+<div class="row justify-content-center align-self-center" *ngIf="isIns">
+  <div class="col-md-5">
+    <div class="form-area">
+      <div class="form">
+        <br style="clear:both">
+        <h3 style="margin-bottom: 25px; text-align: center;">Add New Position</h3>
+        <div class="form-group row">
+          <div class="col-md-4">
+              <label class="col-4 col-form-label" for="course">Course</label>
+          </div>
+
+          <div class="col-md-8">
+            <div>
+                <input [(ngModel)]="courseName" type="text" class="form-control" id="course" name="course"
+                        placeholder="Course" required (input)="searchCourse(courseName)" #course="ngModel"
+                       *ngIf="(!(addC))" >
+              <input  type="text" class="form-control" name="course"
+                     placeholder="Course"  disabled *ngIf="((addC))"  >
+                <div *ngIf="showResults">
+                  <ul class="list-group">
+                    <li class="list-group-item" *ngFor="let course of results" (click)="selectCourse(course)">
+                      {{course.courseNumber}} - {{course.name}}
+                    </li>
+                      <button (click)="addCourse()" class="btn btn-secondary btn-block">Add Course</button>
+                  </ul>
+                </div>
+          </div>
+          </div>
+        </div>
+
+
+
+        <div class="form-group row course" *ngIf="addC">
+          <div class="col-md-6">
+            <input type="text" [(ngModel)]="newCourse.courseNumber" class="form-control"  name="section"
+                   placeholder="Course Number" required #cnumber="ngModel">
+          </div>
+          <div class="col-md-6">
+            <input type="text" [(ngModel)]="newCourse.name" class="form-control"  name="section"
+                   placeholder="Course Name" required #cname="ngModel">
+          </div>
+
+              <button class="btn btn btn-secondary addCourse"
+                      [ngClass]="{'disabled':(cnumber.invalid || cname.invalid)}" (click)="addInstructor(newCourse)">
+                Add Course</button>
+              <span class="cancel" (click)="cancelAdd()"><i class="fa fa-times" ></i></span>
+
+        </div>
+
+
+
+        <div class="form-group row">
+          <div class="col-md-4">
+            <label class="col-4 col-form-label" for="semsester">Semester</label>
+          </div>
+          <div class="col-md-8">
+            <select class="form-control" id="semsester" [(ngModel)]="position.semester" required #sem="ngModel">
+              <!--<option value disabled selected >Select Semester</option>-->
+              <option value="fall">Fall</option>
+              <option value="spring">Spring</option>
+              <option value="summer-full">Full-Summer</option>
+              <option value="summer1">Summer 1</option>
+              <option value="summer2">Summer 2</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-4">
+            <label class="col-4 col-form-label" for="section">Section</label>
+          </div>
+          <div class="col-md-8">
+            <input type="text" [(ngModel)]="position.sectionName" class="form-control" id="section" name="section"
+                   placeholder="Section Name" required #sec="ngModel">
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-4">
+            <label class="col-4 col-form-label" for="year" >Year</label>
+          </div>
+          <div class="col-md-8">
+            <input type="number" class="form-control" id="year" name="year" placeholder="Year"
+                   required [(ngModel)]="position.year" #year="ngModel">
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-4">
+            <label class="col-4 col-form-label" for="strength" >Strength</label>
+          </div>
+          <div class="col-md-8">
+            <input type="number" class="form-control" id="strength" name="strength" placeholder="Strength of Class"
+                   required [(ngModel)]="position.classStrength" (change)="taSuggest(position.classStrength)"
+                   #num="ngModel">
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-4">
+            <label class="col-4 col-form-label" for="no">TA's</label>
+          </div>
+          <div class="col-md-8">
+            <input type="number" class="form-control" id="no" name="No of TA" placeholder="Number of TA's"
+                   required [(ngModel)]="position.noOfTa" #ta="ngModel">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <textarea class="form-control" type="textarea"  placeholder="Syllabus" rows="4"
+                    [(ngModel)]="position.syllabus"></textarea>
+        </div>
+
+        <button type="button" (click)="submitPos(position)" class="btn btn-primary btn-block"
+                [ngClass]="{'disabled':( sec.invalid
+                || sem.invalid || year.invalid || num.invalid || ta.invalid)}">
+          Add Position</button>
+      </div>
+    </div>
+  </div>
+</div>

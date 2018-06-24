@@ -12,7 +12,13 @@
               <div class="input-group-prepend">
                 <span class="btn btn-dark active"><i class="fa fa-envelope"></i></span>
               </div>
-              <input type="text" class="form-control" [(ngModel)]="user.email" placeholder="Email" />
+              <input type="text" class="form-control" [(ngModel)]="user.email" placeholder="Email" required
+                     #email="ngModel"/>
+            </div>
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+              <div *ngIf="email.errors.required">
+                Email is required.
+              </div>
             </div>
           </div>
 
@@ -21,20 +27,27 @@
               <div class="input-group-prepend">
                 <span class="btn btn-dark active"><i class="fa fa-lock"></i></span>
               </div>
-              <input type="password" class="form-control" [(ngModel)]="user.password" placeholder="Password" />
+              <input type="password" class="form-control" [(ngModel)]="user.password" placeholder="Password" required
+                     #password="ngModel"/>
+            </div>
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+              <div *ngIf="password.errors.required">
+                Password is required.
+              </div>
             </div>
           </div>
-          <div class="alert alert-danger"  *ngIf="userFail">
-            <strong>Error!</strong> Please enter Username.
           </div>
-          <div class="alert noPassword alert-danger"  *ngIf="passFail">
-            <strong>Error!</strong> Please enter password.
-          </div>
+          <!--<div class="alert alert-danger"  *ngIf="userFail">-->
+            <!--<strong>Error!</strong> Please enter Username.-->
+          <!--</div>-->
+          <!--<div class="alert noPassword alert-danger"  *ngIf="passFail">-->
+            <!--<strong>Error!</strong> Please enter password.-->
+          <!--</div>-->
           <div class="alert alert-danger"  *ngIf="loginFailed">
             <strong>Error!</strong> Incorrect Credentials.
           </div>
           <button  class="btn btn-sm btn-primary btn-block" (click)="login(user)"
-                   role="button">
+                   role="button" [ngClass]="{'disabled': (password.invalid || email.invalid)}">
             <b>Login</b>
           </button>
           <div >
@@ -45,5 +58,5 @@
     </div>
   </div>
   </div>
-</div>
+
 

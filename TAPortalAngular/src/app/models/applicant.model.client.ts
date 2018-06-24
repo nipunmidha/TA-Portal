@@ -1,6 +1,6 @@
 import {School} from './school.model.client';
 
-export class Instructor {
+export class Applicant {
   _id: String;
   username: String;
   password: String;
@@ -9,4 +9,5 @@ export class Instructor {
   email: String;
   type: String;
   school: School;
+
 }

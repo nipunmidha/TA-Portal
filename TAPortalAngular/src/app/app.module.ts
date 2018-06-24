@@ -15,6 +15,17 @@ import { AdminInstructorsPannelComponent } from './admin-instructors-pannel/admi
 import {InstructorServiceClient} from './services/instrcutor.service.client';
 import { AdminSchoolModuleComponent } from './admin-school-module/admin-school-module.component';
 import {SchoolServiceClient} from './services/school.service.client';
+import { AdminApplicantModuleComponent } from './admin-applicant-module/admin-applicant-module.component';
+import {ApplicantServiceClient} from './services/applicant.service.client';
+import { AdminCourseModuleComponent } from './admin-course-module/admin-course-module.component';
+import {CourseServiceClient} from './services/course.service.client';
+import { ProfileComponent } from './profile/profile.component';
+import {AdminServiceClient} from './services/admin.service.client';
+import { InstructorHomeComponent } from './instructor-home/instructor-home.component';
+import { InstructorPositionComponent } from './instructor-position/instructor-position.component';
+import {PositionServiceClient} from './services/position.service.client';
+import { PositionGridComponent } from './position-grid/position-grid.component';
+import { PositionPageComponent } from './position-page/position-page.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +37,14 @@ import {SchoolServiceClient} from './services/school.service.client';
     AdminMenuComponent,
     AdminPannelComponent,
     AdminInstructorsPannelComponent,
-    AdminSchoolModuleComponent
+    AdminSchoolModuleComponent,
+    AdminApplicantModuleComponent,
+    AdminCourseModuleComponent,
+    ProfileComponent,
+    InstructorHomeComponent,
+    InstructorPositionComponent,
+    PositionGridComponent,
+    PositionPageComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +54,11 @@ import {SchoolServiceClient} from './services/school.service.client';
   providers: [
     UserServiceClient,
     InstructorServiceClient,
-    SchoolServiceClient
+    SchoolServiceClient,
+    ApplicantServiceClient,
+    CourseServiceClient,
+    AdminServiceClient,
+    PositionServiceClient
   ],
   bootstrap: [AppComponent]
 })

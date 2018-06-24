@@ -21,8 +21,8 @@ export class LoginComponent implements OnInit {
     this.loginFailed = false;
     this.passFail = false;
     this.userFail = false;
-    if ( !reg.email) { this.userFail = true; }
-    if ( !reg.password) { this.passFail = true; }
+    // if ( !reg.email) { this.userFail = true; }
+    // if ( !reg.password) { this.passFail = true; }
     if (reg.email && reg.password) {
       this.service.login(reg.username, reg.password)
         .then((res) => {
@@ -33,6 +33,9 @@ export class LoginComponent implements OnInit {
              .then(user => {
                if (user.type === 'ADMIN') {
                  this.router.navigate(['/admin']);
+               }
+               if (user.type === 'INSTRUCTOR') {
+                 this.router.navigate(['/instructor']);
                }
              })
             this.router.navigate(['profile']);

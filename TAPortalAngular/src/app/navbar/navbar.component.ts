@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {User} from '../models/user.model.client';
+import {NavigationStart, Router} from '@angular/router';
+import {UserServiceClient} from '../services/user.service.client';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  user: User;
+  constructor(private route: Router, private service: UserServiceClient ) {
+    route.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        this.service.profile()
+          .then(user => this.user = user); }
+    } );
   }
+  logout() {
+    this.service
+      .logout()
+      .then((res) => {this.route.navigate(['login']);
+      });
+  }
+  ngOnInit() {
+    this.service.profile()
+      .then(user => this.user = user); }
+
 
 }

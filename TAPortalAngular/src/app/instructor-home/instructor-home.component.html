@@ -1,0 +1,21 @@
+  <div class="bg">
+  <br/>
+  <div class="alert alert-danger"  *ngIf="sessionOut">
+    <strong>Session Expired!</strong> Please login.
+    <a class="float-md-right" routerLink="/login">Login</a>
+  </div>
+  <div class="container-fluid" *ngIf="!sessionOut">
+    <div class="row">
+      <div class="col-md-2">
+      <a class="btn btn-primary" routerLink="/instructor/position">
+        <b>
+        <i class="fa fa-plus"></i>
+        Add new position</b>
+      </a>
+    </div>
+      <div class="col-md-10">
+        <app-position-grid></app-position-grid>
+      </div>
+    </div>
+  </div>
+  </div>

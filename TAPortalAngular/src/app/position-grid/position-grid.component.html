@@ -1,0 +1,35 @@
+<div class="bg">
+<div class="row">
+  <div class="col-lg-4" *ngFor="let position of positions">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <span routerLink="/position/{{position._id}}"><i class="fa fa-info-circle"></i></span>
+        <h5 class="card-title">{{position.course.courseNumber}} - {{position.course.name}}
+        </h5>
+        <div class="form-group row">
+          <div class="col-md-6">Class Strength: </div>
+          <div class="col-md-6">{{position.classStrength}} </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-6">No Of TA's: </div>
+          <div class="col-md-6">{{position.noOfTa}} </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-6">TA's Hired: </div>
+          <div class="col-md-6">{{position.taHired  }} </div>
+        </div>
+        <div *ngIf="(isIns && !position.postionsFilled)">
+          <a routerLink="/admin" class="card-link">Check All Applications</a><br/>
+          <a (click)="markPositionClosed(position._id)" class="btn btn-warning">Mark Position Closed</a>
+          <span (click)="deleteIca(position._id)" ><i class="fa fa-trash"></i></span>
+        </div>
+        <div *ngIf="position.postionsFilled">
+          <br/>
+          <a  class="btn btn-success">Mark Class Completed</a>
+          <br/>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

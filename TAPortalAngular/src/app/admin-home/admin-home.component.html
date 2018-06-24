@@ -1,4 +1,11 @@
-<div class="row">
+<div class="alert alert-danger"  *ngIf="!isAdmin && !wrongAccess">
+  <strong>Session Expired!</strong> Please login.
+  <a class="float-md-right" routerLink="/login">Login</a>
+</div>
+<div class="alert alert-danger"  *ngIf="wrongAccess">
+  <strong>You are on wrong page!</strong> Move Out.
+</div>
+<div class="row" *ngIf="isAdmin">
 
   <div class="col-lg-2">
       <app-admin-menu></app-admin-menu>

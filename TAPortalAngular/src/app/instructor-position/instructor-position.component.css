@@ -1,0 +1,56 @@
+
+.red{
+  color:red;
+}
+.form-area
+{
+  background-color: #e8f2fc;
+  padding: 10px 40px 60px;
+  margin: 10px 0px 60px;
+  border: 1px solid GREY;
+}
+.col-md-4{
+  text-align: center;
+}
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
+}
+label
+{
+  font-weight: bold;
+  font-family: "Times New Roman";
+}
+
+.list-group{
+  position: fixed;
+  z-index: 100;
+}
+
+.list-group-item{
+  cursor: pointer;
+}
+.btn-secondary{
+  font-weight: bold;
+}
+
+.addCourse{
+  margin-top: 5px;
+  margin-left: 170px;
+  text-align: center;
+}
+.course{
+  background: #ffeeba;
+  padding: 5px;
+  border-bottom-width: thick;
+  border: black;
+}
+.cancel{
+  margin-left: 145px;
+  margin-top: 19px;
+  color: #dc3545;
+}
