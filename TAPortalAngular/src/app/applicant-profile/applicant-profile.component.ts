@@ -4,6 +4,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AdminServiceClient} from '../services/admin.service.client';
 import {ApplicantServiceClient} from '../services/applicant.service.client';
 import {Applicant} from '../models/applicant.model.client';
+import {Application} from '../models/application.model.client';
+import {ApplicationServiceClient} from '../services/application.service.client';
 
 @Component({
   selector: 'app-applicant-profile',
@@ -14,6 +16,7 @@ export class ApplicantProfileComponent implements OnInit {
 
   constructor(private userService: UserServiceClient,
               private applicantService: ApplicantServiceClient,
+              private applicationService: ApplicationServiceClient,
               private router: Router,
               private aRoute: ActivatedRoute) {
     this.aRoute.params.subscribe(params => this.addData(params));
@@ -27,6 +30,7 @@ export class ApplicantProfileComponent implements OnInit {
   positionId;
   userId;
   isIns;
+  allApplications: Application[] = [];
   ngOnInit() {
     this.checkProfile();
   }
@@ -37,6 +41,8 @@ export class ApplicantProfileComponent implements OnInit {
           this.sessionOut = true;
         } else {
           this.user = user;
+          this.applicationService.findAllApplicationsForApplicantusingId(user._id)
+            .then(applis => this.allApplications = applis.filter(a => a.instructorRating));
         }
         if (user.type ===  'INSTRUCTOR') {
           this.publicView = true;

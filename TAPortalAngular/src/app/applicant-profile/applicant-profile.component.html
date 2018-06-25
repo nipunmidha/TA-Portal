@@ -130,7 +130,24 @@
         <div class="reviews">
           <h5>Rating and Comments</h5>
           <br/>
-          <h6>No Reviews yet</h6>
+          <div *ngIf="allApplications.length === 0">
+             <h6>No Reviews yet</h6>
+          </div>
+          <ul class="list-group-flush">
+            <li class="list-group-item" *ngFor="let aa of allApplications">
+              <h5>{{aa.position.sectionName}} {{aa.position.semester}} {{aa.position.year}}</h5>
+              <div class="row stars">
+                <div *ngFor="let r of ' '.repeat(aa.instructorRating).split('')" class="gold">
+                  <span><i class="fa fa-star"></i></span>
+                </div>
+                <div *ngFor="let r of ' '.repeat(5 - aa.instructorRating ).split('')">
+                  <span><i class="fa fa-star"></i></span>
+                </div>
+              </div>
+              <textarea style="overflow:auto;resize:none; margin: 10px; background: #9fcdff" input="textarea" disabled [(ngModel)] = "aa.instructorRemarks" placeholder="Comments"
+                        name="remarks" rows="5" cols="40"></textarea>
+            </li>
+          </ul>
 
         </div>
 

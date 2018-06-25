@@ -20,6 +20,11 @@ export class ApplicationServiceClient {
       credentials: 'include'
     } ).then(res => { return res.json(); } );
   }
+  findAllApplicationsForApplicantusingId(id) {
+    return fetch(this.url + '/api/applicant/' + id + '/aa/', {
+      credentials: 'include'
+    } ).then(res => { return res.json(); } );
+  }
   updateIsSelected(icaId, posId) {
     return fetch(this.url + '/api/position/' + posId + '/aa/' + icaId + '/updateselected?status=true', {
       credentials: 'include'
