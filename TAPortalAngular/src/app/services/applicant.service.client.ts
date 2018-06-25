@@ -1,8 +1,8 @@
 export class ApplicantServiceClient {
   url = 'http://localhost:3000';
   findUserById(userId) {
-    return fetch(this.url + '/api/applicant/' + userId)
-      .then(response => response.json());
+    return fetch(this.url + '/api/applicant/' + userId + '/profile')
+      .then(response => {return response.json(); } );
   }
   findAllInstructors() {
     return fetch(this.url + '/api/applicant/', {

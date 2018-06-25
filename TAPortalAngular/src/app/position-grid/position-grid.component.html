@@ -1,12 +1,25 @@
+<ul class="nav nav-tabs" *ngIf="isAppli">
+  <li class="nav-item">
+    <a class="nav-link" [ngClass]="{'active' : notAppliedPos}" (click)="seeOtherPos()">Positions</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [ngClass]="{'active' : appliedPos}" (click)="seeAppliedPos()">Applied Position</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [ngClass]="{'active' : hiredPos}" (click)="seeHiredPos()">All Hired Position</a>
+  </li>
+</ul>
+
 <br/>
-<div class="bg">
+<div class="bg" *ngIf="!isAppli || (isAppli && notAppliedPos)">
 <div class="row">
   <div class="col-lg-4" *ngFor="let position of positions">
     <div class="card" style="width: 18rem;">
       <div class="card-body">
         <span routerLink="/position/{{position._id}}"><i class="fa fa-info-circle"></i></span>
-        <h5 class="card-title">{{position.course.courseNumber}} - {{position.course.name}}
-        </h5>
+        <h5 class="card-title">{{position.course.courseNumber}} - {{position.course.name}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{position.sectionName}} {{position.semester}} {{position.year}}
+        </h6>
         <div class="form-group row">
           <div class="col-md-6">Instructor: </div>
           <div class="col-md-6">{{position.instructor.firstName}} {{position.instructor.lastName}}</div>
@@ -23,8 +36,13 @@
           <div class="col-md-6">TA's Hired: </div>
           <div class="col-md-6">{{position.taHired  }} </div>
         </div>
+        <div class="form-group row">
+          <div class="col-md-6">Status: </div>
+          <div class="col-md-6" *ngIf="position.postionsFilled">Closed</div>
+          <div class="col-md-6" *ngIf="!position.postionsFilled">Open</div>
+        </div>
         <div *ngIf="(isIns && !position.postionsFilled)">
-          <a routerLink="/admin" class="card-link">Check All Applications</a><br/>
+          <a routerLink="/position/{{position._id}}/applications" class="card-link">Check All Applications</a><br/>
           <a (click)="markPositionClosed(position._id)" class="btn btn-warning">Mark Position Closed</a>
           <span (click)="deleteIca(position._id)" ><i class="fa fa-trash"></i></span>
         </div>
@@ -34,10 +52,67 @@
           <br/>
         </div>
         <div *ngIf="isAppli">
-          <a  class="btn btn-success">Apply</a>
+          <a  class="btn btn-success" (click)="applyForPosition(position)">Apply</a>
         </div>
       </div>
     </div>
   </div>
 </div>
+</div>
+
+
+<div class="bg" *ngIf="(isAppli && appliedPos)">
+  <div class="row">
+    <div class="col-lg-4" *ngFor="let position of appliedPositions">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <span routerLink="/position/{{position._id}}"><i class="fa fa-info-circle"></i></span>
+          <h5 class="card-title">{{position.course.courseNumber}} - {{position.course.name}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{position.sectionName}} {{position.semester}} {{position.year}}</h6>
+          <div class="form-group row">
+            <div class="col-md-6">Instructor: </div>
+            <div class="col-md-6">{{position.instructor.firstName}} {{position.instructor.lastName}}</div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">Class Strength: </div>
+            <div class="col-md-6">{{position.classStrength}} </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">No Of TA's: </div>
+            <div class="col-md-6">{{position.noOfTa}} </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">TA's Hired: </div>
+            <div class="col-md-6">{{position.taHired  }} </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">Status: </div>
+            <div class="col-md-6" *ngIf="position.postionsFilled">Closed</div>
+            <div class="col-md-6" *ngIf="!position.postionsFilled">Open</div>
+          </div>
+            <button  class="btn btn-link" disabled>Applied</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bg" *ngIf="(isAppli && hiredPos)">
+  <div class="row">
+    <div class="col-lg-4" *ngFor="let aa of hiredAA">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{aa.position.course.courseNumber}} - {{aa.position.course.name}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{aa.position.sectionName}} {{aa.position.semester}}
+            {{aa.position.year}}</h6>
+          <div class="form-group row">
+            <div class="col-md-6">Instructor: </div>
+            <div class="col-md-6">{{aa.position.instructor.firstName}} {{aa.position.instructor.lastName}}</div>
+          </div>
+
+          <button  class="btn btn-link" disabled id="hire">Hired</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

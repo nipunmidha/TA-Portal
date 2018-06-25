@@ -10,5 +10,6 @@ export class Applicant {
   type: String;
   school: School;
   resume: String;
-
+  rated: Number;
+  avgRating: Number;
 }

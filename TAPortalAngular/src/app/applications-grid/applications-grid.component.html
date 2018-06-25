@@ -1,0 +1,96 @@
+<br/>
+<div class="bg" >
+  <div class="row">
+    <div class="col-lg-3" *ngFor="let aa of applications">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{aa.applicant.firstName}} {{aa.applicant.lastName}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{aa.position.sectionName}} {{aa.position.semester}}
+            {{aa.position.year}}</h6>
+          <div class="form-group row">
+            <div class="col-md-8">
+              <div class="rate-container" *ngIf="(aa.applicant.avgRating === 1)">
+                <i class="fa fa-star gold"></i>
+                <i class="fa fa-star "></i>
+                <i class="fa fa-star "></i>
+                <i class="fa fa-star "></i>
+                <i class="fa fa-star "></i>
+              </div>
+
+              <div class="rate-container" *ngIf="(aa.applicant.avgRating === 2)">
+                <i class="fa fa-star gold"></i>
+                <i class="fa fa-star gold"></i>
+                <i class="fa fa-star "></i>
+                <i class="fa fa-star "></i>
+                <i class="fa fa-star "></i>
+              </div>
+              <div class="rate-container" *ngIf="(aa.applicant.avgRating === 3)">
+                <i class="fa fa-star gold"></i>
+                <i class="fa fa-star gold"></i>
+                <i class="fa fa-star gold"></i>
+                <i class="fa fa-star "></i>
+                <i class="fa fa-star "></i>
+              </div>
+              <div class="rate-container" *ngIf="(aa.applicant.avgRating === 4)">
+                <i class="fa fa-star gold"></i>
+                <i class="fa fa-star gold"></i>
+                <i class="fa fa-star gold"></i>
+                <i class="fa fa-star gold"></i>
+                <i class="fa fa-star "></i>
+              </div>
+              <div class="rate-container" *ngIf="(aa.applicant.avgRating === 5)">
+                <i class="fa fa-star gold"></i>
+                <i class="fa fa-star gold"></i>
+                <i class="fa fa-star gold"></i>
+                <i class="fa fa-star gold"></i>
+                <i class="fa fa-star gold"></i>
+              </div>
+            </div>
+            <div class="col-md-4" id="rating">{{aa.applicant.rated}} times</div>
+          </div>
+          {{aa.position.sectionName}}
+          <button  class="btn btn-link" routerLink="/position/{{positionId}}/profile/{{aa.applicant._id}}">View Profile</button>
+          <button  class="btn btn-warning">Hire</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--<div class="stars">-->
+  <!--<div class="rate-container">-->
+    <!--<i class="fa fa-star gold"></i>-->
+    <!--<i class="fa fa-star "></i>-->
+    <!--<i class="fa fa-star "></i>-->
+    <!--<i class="fa fa-star "></i>-->
+    <!--<i class="fa fa-star "></i>-->
+  <!--</div>-->
+  <!---->
+  <!--<div class="rate-container">-->
+    <!--<i class="fa fa-star gold"></i>-->
+    <!--<i class="fa fa-star gold"></i>-->
+    <!--<i class="fa fa-star "></i>-->
+    <!--<i class="fa fa-star "></i>-->
+    <!--<i class="fa fa-star "></i>-->
+  <!--</div>-->
+  <!--<div class="rate-container">-->
+    <!--<i class="fa fa-star gold"></i>-->
+    <!--<i class="fa fa-star gold"></i>-->
+    <!--<i class="fa fa-star gold"></i>-->
+    <!--<i class="fa fa-star "></i>-->
+    <!--<i class="fa fa-star "></i>-->
+  <!--</div>-->
+  <!--<div class="rate-container">-->
+    <!--<i class="fa fa-star gold"></i>-->
+    <!--<i class="fa fa-star gold"></i>-->
+    <!--<i class="fa fa-star gold"></i>-->
+    <!--<i class="fa fa-star gold"></i>-->
+    <!--<i class="fa fa-star "></i>-->
+  <!--</div>-->
+  <!--<div class="rate-container">-->
+    <!--<i class="fa fa-star gold"></i>-->
+    <!--<i class="fa fa-star gold"></i>-->
+    <!--<i class="fa fa-star gold"></i>-->
+    <!--<i class="fa fa-star gold"></i>-->
+    <!--<i class="fa fa-star gold"></i>-->
+  <!--</div>-->
+<!--</div>-->

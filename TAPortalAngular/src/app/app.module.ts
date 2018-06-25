@@ -28,6 +28,8 @@ import { PositionGridComponent } from './position-grid/position-grid.component';
 import { PositionPageComponent } from './position-page/position-page.component';
 import { RegisterComponent } from './register/register.component';
 import { ApplicantProfileComponent } from './applicant-profile/applicant-profile.component';
+import {ApplicationServiceClient} from './services/application.service.client';
+import { ApplicationsGridComponent } from './applications-grid/applications-grid.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ import { ApplicantProfileComponent } from './applicant-profile/applicant-profile
     PositionGridComponent,
     PositionPageComponent,
     RegisterComponent,
-    ApplicantProfileComponent
+    ApplicantProfileComponent,
+    ApplicationsGridComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +65,8 @@ import { ApplicantProfileComponent } from './applicant-profile/applicant-profile
     ApplicantServiceClient,
     CourseServiceClient,
     AdminServiceClient,
-    PositionServiceClient
+    PositionServiceClient,
+    ApplicationServiceClient
   ],
   bootstrap: [AppComponent]
 })

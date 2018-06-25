@@ -11,6 +11,7 @@ import {PositionPageComponent} from './position-page/position-page.component';
 import {RegisterComponent} from './register/register.component';
 import {PositionGridComponent} from './position-grid/position-grid.component';
 import {ApplicantProfileComponent} from './applicant-profile/applicant-profile.component';
+import {ApplicationsGridComponent} from './applications-grid/applications-grid.component';
 
 
 const appRoutes: Routes = [
@@ -26,6 +27,8 @@ const appRoutes: Routes = [
   {path: 'profile', component: ProfileComponent},
   {path: 'applicant/profile', component: ApplicantProfileComponent},
   {path: 'position/:positionId', component: PositionPageComponent},
+  {path: 'position/:positionId/applications', component: ApplicationsGridComponent},
+  {path: 'position/:positionId/profile/:profileId', component: ApplicantProfileComponent},
   {path: '**', component: ErrorpageComponent}
 
 ];
