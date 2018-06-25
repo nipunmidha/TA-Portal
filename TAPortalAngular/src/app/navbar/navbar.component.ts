@@ -10,7 +10,7 @@ import {UserServiceClient} from '../services/user.service.client';
 })
 export class NavbarComponent implements OnInit {
 
-  user: User;
+  user: User = new User();
   constructor(private route: Router, private service: UserServiceClient ) {
     route.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
@@ -24,9 +24,20 @@ export class NavbarComponent implements OnInit {
       .then((res) => {this.route.navigate(['login']);
       });
   }
-  ngOnInit() {
-    this.service.profile()
-      .then(user => this.user = user); }
+  goHome() {
+    if (this.user.type === 'ADMIN') {this.route.navigate(['admin']); }
+    if (this.user.type === 'INSTRUCTOR') {this.route.navigate(['instructor']); }
+    if (this.user.type === 'APPLICANT') {this.route.navigate(['applicant']); }
+    if (!this.user.email) { this.route.navigate(['home']); }
+  }
+  profile() {
+    if (this.user.type === 'APPLICANT') {this.route.navigate(['applicant/profile']);
+    } else {
+      this.route.navigate(['profile']); }
+
+
+  }
+  ngOnInit() {}
 
 
 }

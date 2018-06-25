@@ -1,9 +1,7 @@
 <div class="container">
-  <div class="row justify-content-center align-self-center ">
+  <a class="btn btn-warning" style="margin-top: 5px" (click)="changeView()">Public View</a>
+  <div class="row justify-content-center align-self-center " *ngIf="!publicView">
     <div class="col-md-10">
-      <div class="error alert-danger fade in"  style="display: none;">
-        <strong>Error!</strong>Profile Not Updated.
-      </div>
       <div class="alert alert-success"  *ngIf="updateS">
         <strong>Success!</strong>Profile Updated.
       </div>
@@ -17,7 +15,7 @@
       </div>
       <div *ngIf="!sessionOut">
 
-        <div class="form-group row" *ngIf="!isAdmin">
+        <div class="form-group row" >
           <label class="col-md-4 col-form-label" for="schoolFld">School</label>
           <div class="col-md-4">
             <div class="input-group">
@@ -29,6 +27,7 @@
                      placeholder="School" class="form-control input-md" disabled>
 
             </div>
+
           </div>
         </div>
 
@@ -70,12 +69,18 @@
                 <a class="btn btn-dark active">  <i class="fa fa-align-justify"></i>
                 </a>
               </div>
-              <input id="lastNameFld" [(ngModel)]="user.lastName" name="Secondary Occupation (if any)" type="text"
+              <input id="lastNameFld" [(ngModel)]="user.lastName" type="text" name="Last Name"
                      placeholder="Last Name" class="form-control input-md">
             </div>
           </div>
         </div>
-
+        <div class="form-group row">
+          <label class="col-md-4 col-form-label" for="resumeFld">Resume</label>
+          <div class="col-md-4">
+              <textarea id="resumeFld" [(ngModel)]="user.resume" type="textarea" name="Resume"
+                        placeholder="Resume" class="form-control input-md" rows="6"></textarea>
+        </div>
+        </div>
         <div class="form-group row">
           <label class="col-md-4 control-label" ></label>
           <div class="col-md-4">
@@ -88,9 +93,47 @@
     </div>
 
   </div>
+
+  <div *ngIf="!sessionOut && publicView">
+  <div class="row justify-content-center align-self-center ">
+    <div class="col-md-10">
+      <div>
+        <h2>{{user.firstName}} {{user.lastName}}</h2>
+      </div>
+      <br/>
+
+
+        <div class="form-group row" >
+          <label class="col-md-4 col-form-label">School:</label>
+          <div class="dis col-md-4 col-form-label">
+            <h6>{{user.school.name}}</h6>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-4 col-form-label" for="emailFld">Email Address:</label>
+          <div class="dis col-md-4 col-form-label">
+            <h6>{{user.email}}</h6>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-4 col-form-label" for="resumeFld"></label>
+          <div class="col-md-4">
+              <textarea disabled [(ngModel)]="user.resume" type="textarea" name="Resume"
+                        placeholder="Resume" class="form-control input-md" rows="6"></textarea>
+          </div>
+        </div>
+        <div class="reviews">
+          <h5>Rating and Comments</h5>
+          <br/>
+          <h6>No Reviews yet</h6>
+
+        </div>
+
+    </div>
+
+  </div>
+  </div>
 </div>
-
-
-
-
 

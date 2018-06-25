@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AdminServiceClient} from '../services/admin.service.client';
 import {Router} from '@angular/router';
 import {UserServiceClient} from '../services/user.service.client';
+import {InstructorServiceClient} from '../services/instrcutor.service.client';
 
 @Component({
   selector: 'app-profile',
@@ -12,6 +13,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(private adminService: AdminServiceClient,
               private userService: UserServiceClient,
+              private insService: InstructorServiceClient,
               private router: Router) { }
 
   user;
@@ -21,7 +23,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.userService.profile()
       .then(user => {
-        if (user.status === 401) {
+        if (user.status === 401 || (user.type !==  'ADMIN' && user.type !==  'INSTRUCTOR') ) {
           this.sessionOut = true;
         } else {
           this.user = user;
@@ -41,8 +43,10 @@ export class ProfileComponent implements OnInit {
     if (this.isAdmin) {
       this.adminService.updateAdmin(user)
         .then(() => this.updateS = true);
+    } else {
+      this.insService.updateInstructor(user)
+        .then(() => this.updateS = true);
     }
   }
-
 
 }

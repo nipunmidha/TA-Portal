@@ -8,11 +8,20 @@ export class PositionServiceClient {
   findAllIcas() {
     return fetch(this.url + '/api/ica/', {
       credentials: 'include'
-    } )
-      .then(response => response.json());
+    } );
   }
   findAllIcasForInstructor() {
     return fetch(this.url + '/api/instructor/ica/', {
+      credentials: 'include'
+    } );
+  }
+  findAllIcasForSchool(id) {
+    return fetch(this.url + '/api/school/' + id + '/ica/', {
+      credentials: 'include'
+    } );
+  }
+  findAllIcasForApplicant() {
+    return fetch(this.url + '/api/applicant/ica/', {
       credentials: 'include'
     } );
   }

@@ -5,6 +5,7 @@ import {Position} from '../models/position.model.client';
 import {PositionServiceClient} from '../services/position.service.client';
 import {School} from '../models/school.model.client';
 import {Router} from '@angular/router';
+import {Applicant} from '../models/applicant.model.client';
 
 @Component({
   selector: 'app-position-grid',
@@ -17,6 +18,7 @@ export class PositionGridComponent implements OnInit {
               private positionService: PositionServiceClient) { }
 
   user: Instructor = new Instructor();
+  applicant: Applicant = new Applicant();
   instructorSchool: School = new School();
   positions: Position[] = []
   isIns;
@@ -27,7 +29,9 @@ export class PositionGridComponent implements OnInit {
         if ( user.type === 'INSTRUCTOR') {
               this.isIns = true; }
         if ( user.type === 'APPLICANT') {
-          this.isAppli = true; }
+          this.isAppli = true;
+          this.applicant = user;
+        }
           this.findAllPostions();
         }
       );
@@ -41,6 +45,23 @@ export class PositionGridComponent implements OnInit {
           }
         });
     }
+  if (this.isAppli) {
+      this.positionService.findAllIcas()
+        .then(res => {
+          if (res.status === 200) {
+            res.json().then(icas => this.positions = icas
+              .filter(ica => ica.course.school === this.applicant.school._id));
+          }
+        });
+  }
+  if (! this.isIns && ! this.isAppli) {
+    this.positionService.findAllIcas()
+      .then(res => {
+        if (res.status === 200) {
+          res.json().then(icas => this.positions = icas);
+        }
+      });
+  }
   }
   deleteIca(id) {
     this.positionService.deleteIca(id)

@@ -26,6 +26,8 @@ import { InstructorPositionComponent } from './instructor-position/instructor-po
 import {PositionServiceClient} from './services/position.service.client';
 import { PositionGridComponent } from './position-grid/position-grid.component';
 import { PositionPageComponent } from './position-page/position-page.component';
+import { RegisterComponent } from './register/register.component';
+import { ApplicantProfileComponent } from './applicant-profile/applicant-profile.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { PositionPageComponent } from './position-page/position-page.component';
     InstructorHomeComponent,
     InstructorPositionComponent,
     PositionGridComponent,
-    PositionPageComponent
+    PositionPageComponent,
+    RegisterComponent,
+    ApplicantProfileComponent
   ],
   imports: [
     BrowserModule,

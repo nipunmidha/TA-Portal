@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand mb-0 h1" routerLink="/" id="nav">
+  <a class="navbar-brand mb-0 h1" (click)="goHome()" id="nav">
     <!--<img src="https://encrypted-tbn0.gstatic.com/-->
       <!--images?q=tbn:ANd9GcQ7KFUTraieZJgtXRgrTfNUECcjeO84V535hx8ekgoRlT27i5KmwQ"-->
          <!--width="30" height="30" alt="">-->
@@ -13,10 +13,11 @@
       <a class="nav-link" routerLink="/login">Login</a>
     </li>
     <li class="nav-item" *ngIf="user.email">
-      <a class="nav-link" routerLink="/profile">Welecome {{user.firstName}}</a>
+      <a class="nav-link" id="profile" >
+        <i class="fa fa-user" (click)="profile()"></i></a>
     </li>
     <li class="nav-item" *ngIf="user.email" >
-      <button class="nav-link btn-link" (click)="logout()">Logout</button>
+      <a class="nav-link btn-link" (click)="logout()">Logout</a>
     </li>
   </ul>
 </nav>

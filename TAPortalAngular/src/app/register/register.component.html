@@ -1,0 +1,130 @@
+<br/>
+<div class="container-fluid">
+  <div class="bg">
+    <div class="row justify-content-center align-self-center">
+      <div class="col-md-4 col-md-offset-4">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <h4 class="text-center">
+              <b>REGISER</b></h4>
+            <nav class="nav nav-tabs" >
+              <a class=" nav-link" [ngClass]="{'instructor active':isIns}" (click)="userIsInstructor()">
+                Instructor</a>
+              <a class="nav-link" [ngClass]="{'applicant active':isAppl, 'active':isAppl }" (click)="userIsApplicant()">
+                Applicant</a>
+            </nav>
+            <div [ngClass]="{'insback':isIns, 'aplback':isAppl }" >
+
+              <div class="form-group">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="btn btn-dark active"><i class="fa fa-school"></i></span>
+                  </div>
+                  <input type="text" class="form-control" [(ngModel)]="schoolName" placeholder="School" required
+                     (input)="schoolChange(schoolName)" #school="ngModel" (blur)="clearSchool()"/>
+                </div>
+                <div *ngIf="showResults">
+                  <ul class="list-group">
+                    <li class="list-group-item" *ngFor="let school of results" (click)="selectSchool(school)">
+                        {{school.name}}
+                    </li>
+                    <button  (click)="addSchool()" class="btn btn-secondary btn-block">Add School</button>
+                  </ul>
+                </div>
+                <div *ngIf="school.invalid && (school.dirty || school.touched) && !addC" class="alert alert-danger">
+                  <div *ngIf="school.errors.required  && !addC ">
+                    School is required.
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row course" *ngIf="addC">
+                <div class="col-md-6">
+                  <input type="text" [(ngModel)]="newSchool.name" class="form-control"  name="section"
+                         placeholder="School Name" required #cnumber="ngModel">
+                </div>
+                <div class="col-md-6">
+                  <input type="text" [(ngModel)]="newSchool.emailDomain" class="form-control"  name="section"
+                         placeholder="Email Domain" required #cname="ngModel">
+                </div>
+
+                <button class="btn btn btn-secondary addCourse"
+                        [ngClass]="{'disabled':(cnumber.invalid || cname.invalid)}" (click)="addNewSchool(newSchool)">
+                  Add Course</button>
+                <span class="cancel" (click)="cancelAdd()"><i class="fa fa-times" ></i></span>
+
+              </div>
+
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="btn btn-dark active"><i class="fa fa-envelope"></i></span>
+                </div>
+                <input type="text" class="form-control" [(ngModel)]="user.email" placeholder="Email" required
+                       #email="ngModel"/>
+              </div>
+              <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                <div *ngIf="email.errors.required">
+                  Email is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="btn btn-dark active"><i class="fa fa-lock"></i></span>
+                </div>
+                <input type="password" class="form-control" [(ngModel)]="user.password" placeholder="Password" required
+                       #password="ngModel"/>
+              </div>
+              <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                <div *ngIf="password.errors.required">
+                  Password is required.
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="btn btn-dark active"><i class="fa fa-thumbtack"></i></span>
+                </div>
+                <input type="password" class="form-control" [(ngModel)]="user.confirmPassword"
+                       placeholder="Confirm Password"
+                       required
+                       #cpassword="ngModel"/>
+              </div>
+              <div *ngIf="cpassword.invalid && (cpassword.dirty || cpassword.touched)" class="alert alert-danger">
+                <div *ngIf="cpassword.errors.required">
+                  Confirm Password is required.
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--<div class="alert alert-danger"  *ngIf="userFail">-->
+          <!--<strong>Error!</strong> Please enter Username.-->
+          <!--</div>-->
+          <!--<div class="alert noPassword alert-danger"  *ngIf="passFail">-->
+          <!--<strong>Error!</strong> Please enter password.-->
+          <!--</div>-->
+          <div class="alert alert-danger"  *ngIf="loginFailed">
+            <strong>Error!</strong> Email Id exists
+          </div>
+            <div class="alert alert-danger"  *ngIf="passmatch">
+              <strong>Error!</strong> Both password do not match
+            </div>
+          <button  class="btn btn-sm btn-primary btn-block" (click)="register(user)"
+                   role="button" [ngClass]="{'disabled': (school.invalid || password.invalid ||
+                   email.invalid || cpassword.invalid)}">
+            <b>Register</b>
+          </button>
+          </div>
+          <div >
+            <a  style="float:left" routerLink="/login">Login</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

@@ -1,14 +1,9 @@
 import {School} from './school.model.client';
 
-export class Applicant {
-  _id: String;
+export class RegisterC {
   username: String;
   password: String;
-  firstName: String;
-  lastName: String;
+  confirmPassword: String;
   email: String;
-  type: String;
   school: School;
-  resume: String;
-
 }

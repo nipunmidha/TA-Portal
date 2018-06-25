@@ -12,3 +12,10 @@
 .navbar{
   z-index: 100;
 }
+#nav{
+  color: white;
+  cursor: pointer;
+}
+#profile{
+  cursor: pointer;
+}

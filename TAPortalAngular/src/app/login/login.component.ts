@@ -37,6 +37,9 @@ export class LoginComponent implements OnInit {
                if (user.type === 'INSTRUCTOR') {
                  this.router.navigate(['/instructor']);
                }
+               if (user.type === 'APPLICANT') {
+                 this.router.navigate(['/applicant']);
+               }
              })
             this.router.navigate(['profile']);
           }

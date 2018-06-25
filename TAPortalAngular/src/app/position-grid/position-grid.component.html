@@ -1,3 +1,4 @@
+<br/>
 <div class="bg">
 <div class="row">
   <div class="col-lg-4" *ngFor="let position of positions">
@@ -6,6 +7,10 @@
         <span routerLink="/position/{{position._id}}"><i class="fa fa-info-circle"></i></span>
         <h5 class="card-title">{{position.course.courseNumber}} - {{position.course.name}}
         </h5>
+        <div class="form-group row">
+          <div class="col-md-6">Instructor: </div>
+          <div class="col-md-6">{{position.instructor.firstName}} {{position.instructor.lastName}}</div>
+        </div>
         <div class="form-group row">
           <div class="col-md-6">Class Strength: </div>
           <div class="col-md-6">{{position.classStrength}} </div>
@@ -23,10 +28,13 @@
           <a (click)="markPositionClosed(position._id)" class="btn btn-warning">Mark Position Closed</a>
           <span (click)="deleteIca(position._id)" ><i class="fa fa-trash"></i></span>
         </div>
-        <div *ngIf="position.postionsFilled">
+        <div *ngIf="isIns && position.postionsFilled">
           <br/>
           <a  class="btn btn-success">Mark Class Completed</a>
           <br/>
+        </div>
+        <div *ngIf="isAppli">
+          <a  class="btn btn-success">Apply</a>
         </div>
       </div>
     </div>
