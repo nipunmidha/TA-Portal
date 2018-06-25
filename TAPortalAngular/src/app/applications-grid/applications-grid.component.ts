@@ -27,12 +27,12 @@ export class ApplicationsGridComponent implements OnInit {
     this.applicationService.findAllApplicationsForAPosition(this.positionId)
       .then(res => {
         if (res.status === 200) {
-          res.json().then(applications => this.applications = applications.filter( a => !a.isHired));
+          res.json().then(applications => this.applications = applications.filter( a => !a.isSelected));
         }
       });
   }
   hire(id) {
-    this.applicationService.updateIsSelected(id)
+    this.applicationService.updateIsSelected(id, this.positionId)
       .then(() => this.findAllApplications());
   }
 }

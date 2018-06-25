@@ -28,6 +28,9 @@ export class ApplicantProfileComponent implements OnInit {
   userId;
   isIns;
   ngOnInit() {
+    this.checkProfile();
+  }
+  checkProfile() {
     this.userService.profile()
       .then(user => {
         if (user.status === 401 || user.type !==  'APPLICANT' ) {
@@ -36,23 +39,17 @@ export class ApplicantProfileComponent implements OnInit {
           this.user = user;
         }
         if (user.type ===  'INSTRUCTOR') {
-          this.isIns = true;
+          this.publicView = true;
+          this.profView = true;
+          this.applicantService.findUserById(this.userId)
+            .then(user1 => this.user = user1);
         }
       });
   }
   addData(params) {
     this.positionId = params.positionId;
     this.userId = params.profileId;
-    this.loadUser(this.userId);
-  }
-  loadUser(id) {
-    if (this.isIns) {
-      this.publicView = true;
-      this.profView = true;
-      this.applicantService.findUserById(id)
-        .then(user => this.user = user);
-    }
-
+    this.checkProfile();
   }
 
   logout() {

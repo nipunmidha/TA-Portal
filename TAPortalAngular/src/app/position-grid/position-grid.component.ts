@@ -96,6 +96,9 @@ export class PositionGridComponent implements OnInit {
     this.appliedPositions = this.allPos.filter(pos =>   this.appliedPosIds.includes(pos._id));
     this.positions = this.allPos.filter(pos =>   !this.appliedPosIds.includes(pos._id));
     this.hiredAA = this.aplicantAllApplications.filter(aa => aa.isSelected );
+    // if (!this.aplicantAllApplications) {
+    //   this.positions = this.allPos;
+    // }
   }
   seeAppliedPos() {
     this.appliedPos = true;
@@ -111,5 +114,10 @@ export class PositionGridComponent implements OnInit {
     this.notAppliedPos = false;
     this.appliedPos = false;
     this.hiredPos = true;
+  }
+  markClassComplete(id) {
+    const pos = {_id: id, courseCompleted: true};
+    this.positionService.updatePosition(pos)
+      .then(() => this.findAllPostions());
   }
 }

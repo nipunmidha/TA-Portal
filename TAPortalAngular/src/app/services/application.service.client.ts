@@ -20,8 +20,8 @@ export class ApplicationServiceClient {
       credentials: 'include'
     } ).then(res => { return res.json(); } );
   }
-  updateIsSelected(icaId) {
-    return fetch(this.url + '/api/aa/' + icaId + '/updateselected?status=true', {
+  updateIsSelected(icaId, posId) {
+    return fetch(this.url + '/api/position/' + posId + '/aa/' + icaId + '/updateselected?status=true', {
       credentials: 'include'
     } );
   }
@@ -40,16 +40,16 @@ export class ApplicationServiceClient {
   //     credentials: 'include',
   //   });
   // }
-  // updatePosition(ica) {
-  //   return fetch(this.url + '/api/ica/' + ica._id, {
-  //     body: JSON.stringify(ica),
-  //     credentials: 'include', // include, same-origin, *omit
-  //     method: 'put',
-  //     headers: {
-  //       'content-type': 'application/json'
-  //     }
-  //   });
-  // }
+  reviewApplication(aa) {
+    return fetch(this.url + '/api/aa/review', {
+      body: JSON.stringify(aa),
+      credentials: 'include', // include, same-origin, *omit
+      method: 'put',
+      headers: {
+        'content-type': 'application/json'
+      }
+    });
+  }
   // updatePositionFilled(id) {
   //   return fetch(this.url + '/api/ica/' + id + '/updatePositionFilled?status=true', {
   //     credentials: 'include',

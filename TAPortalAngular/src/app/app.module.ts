@@ -30,6 +30,7 @@ import { RegisterComponent } from './register/register.component';
 import { ApplicantProfileComponent } from './applicant-profile/applicant-profile.component';
 import {ApplicationServiceClient} from './services/application.service.client';
 import { ApplicationsGridComponent } from './applications-grid/applications-grid.component';
+import { ReviewGridComponent } from './review-grid/review-grid.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { ApplicationsGridComponent } from './applications-grid/applications-grid
     PositionPageComponent,
     RegisterComponent,
     ApplicantProfileComponent,
-    ApplicationsGridComponent
+    ApplicationsGridComponent,
+    ReviewGridComponent
   ],
   imports: [
     BrowserModule,

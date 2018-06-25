@@ -1,0 +1,29 @@
+<br/>
+<h2>Reviews for: {{section}} {{sem}}  {{year}}</h2>
+<br/>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let aa of hiredAppplications">
+   <div class="box">
+      {{aa.applicant.firstName}} {{aa.applicant.lastName}}
+      <span class="float-right" *ngIf="aa._id !== aaSelected" (click)="selectAA(aa)">
+        <i class="fa fa-angle-double-down" ></i></span>
+      <span class="float-right" *ngIf="aa._id === aaSelected"(click)="unSelectAA()"><i class="fa fa-angle-double-up">
+          </i></span>
+   </div>
+    <div class="review" *ngIf="aa._id === aaSelected">
+
+      <div class="rate-container">
+        <i class="fa fa-star fa-2x" (click)="rateStars(1)" [ngClass]="{'gold': workingAA.instructorRating >= 1}"></i>
+        <i class="fa fa-star fa-2x" (click)="rateStars(2)" [ngClass]="{'gold': workingAA.instructorRating >= 2}"></i>
+        <i class="fa fa-star fa-2x" (click)="rateStars(3)" [ngClass]="{'gold': workingAA.instructorRating >= 3}"></i>
+        <i class="fa fa-star fa-2x" (click)="rateStars(4)" [ngClass]="{'gold': workingAA.instructorRating >= 4}"></i>
+        <i class="fa fa-star fa-2x" (click)="rateStars(5)" [ngClass]="{'gold': workingAA.instructorRating >= 5}"></i>
+      </div>
+      <textarea input="textarea" [(ngModel)] = "workingAA.instructorRemarks" placeholder="Comments" name="remarks"
+                rows="4" cols="40" *ngIf="!hide"></textarea>
+      <textarea input="textarea" disabled [(ngModel)] = "workingAA.instructorRemarks" placeholder="Comments" name="remarks"
+                rows="4" cols="40" *ngIf="hide"></textarea>
+      <a class="btn btn-warning" [ngClass]="{'disabled': hide}" (click)="saveRatings(aa)">Save</a>
+    </div>
+  </li>
+</ul>
