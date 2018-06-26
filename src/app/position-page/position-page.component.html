@@ -1,5 +1,79 @@
-<p>
-  position-page works!
-  {{school.name}}
-  INs -- {{isIns}}
-</p>
+
+<div class="row justify-content-center align-self-center" >
+  <div class="col-md-5">
+    <div class="form-area">
+      <div class="form">
+        <br style="clear:both">
+        <h3 style="margin-bottom: 25px; text-align: center;">{{position.course.courseNumber}} - {{position.course.name}}</h3>
+        <div class="form-group row">
+          <div class="col-4">
+            <label class="col-4 col-form-label" >School</label>
+          </div>
+
+          <div class="col-8 col-form-label">
+            <div>
+              <label >{{school.name}}</label>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group row">
+          <div class="col-4">
+            <label class="col-4 col-form-label" >Semester</label>
+          </div>
+          <div class="col-8 col-form-label">
+            <label >{{position.semester}} {{position.year}}</label>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-4">
+            <label class="col-4 col-form-label" >Section</label>
+          </div>
+          <div class="col-8 col-form-label">
+            <label >{{position.sectionName}}</label>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-4">
+            <label class="col-4 col-form-label" >Instructor</label>
+          </div>
+          <div class="col-8 col-form-label">
+            <label >{{position.instructor.firstName}} {{position.instructor.lastName}}</label>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-4">
+            <label class="col-4 col-form-label">Strength</label>
+          </div>
+          <div class="col-8 col-form-label">
+            <label>{{position.classStrength}}</label>
+        </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-4">
+            <label class="col-4 col-form-label" >TA's</label>
+          </div>
+          <div class="col-8 col-form-label">
+            <label >{{position.noOfTa}}</label>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-4">
+            <label class="col-4 col-form-label" >Hired number </label>
+          </div>
+          <div class="col-8 col-form-label">
+            <label >{{position.taHired}}</label>
+          </div>
+        </div>
+        <h6>Syllabus</h6>
+        <div class="form-group row sy">
+          <textarea class="form-control" type="textarea"  disabled placeholder="Syllabus" rows="4"
+                    style="overflow:auto;resize:none; margin: 10px; background: inherit; padding: 10px;
+              border:inherit"
+                    [(ngModel)]="position.syllabus"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
