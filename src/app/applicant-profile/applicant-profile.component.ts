@@ -48,7 +48,9 @@ export class ApplicantProfileComponent implements OnInit {
           this.publicView = true;
           this.profView = true;
           this.applicantService.findUserById(this.userId)
-            .then(user1 => this.user = user1);
+            .then(user1 =>{ this.user = user1
+              this.applicationService.findAllApplicationsForApplicantusingId(user1._id)
+                .then(applis => this.allApplications = applis.filter(a => a.instructorRating));} );
         }
       });
   }
