@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     // if ( !reg.email) { this.userFail = true; }
     // if ( !reg.password) { this.passFail = true; }
     if (reg.email && reg.password) {
-      this.service.login(reg.username, reg.password)
+      this.service.login(reg.email, reg.password)
         .then((res) => {
           if (res.status === 401) {
             this.loginFailed = true;

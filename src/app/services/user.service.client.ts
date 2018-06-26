@@ -9,9 +9,9 @@ export class UserServiceClient {
       .then(response => response.json());
   }
 
-  login(username, password) {
+  login(email, password) {
     const credentials = {
-      username: username,
+      email: email,
       password: password
     };
     return fetch(this.url + '/api/login', {

@@ -110,14 +110,18 @@
         <div class="card-body">
           <h5 class="card-title">{{aa.position.sectionName}} {{aa.position.semester}}
             {{aa.position.year}}</h5>
-          <!--<h6 class="card-subtitle mb-2 text-muted">{{aa.position.sectionName}} {{aa.position.semester}}-->
-            <!--{{aa.position.year}}</h6>-->
-          <!--<div class="form-group row">-->
-            <!--<div class="col-md-6">Instructor: </div>-->
-            <!--<div class="col-md-6">{{aa.position.instructor.firstName}} {{aa.position.instructor.lastName}}</div>-->
-          <!--</div>-->
-
           <button  class="btn btn-link" disabled id="hire">Hired</button>
+          <div class="reviews" *ngIf="aa.instructorRating">
+          <h6>Rating and Comment</h6>
+          <div class="row stars">
+            <div *ngFor="let r of ' '.repeat(aa.instructorRating).split('')" class="gold">
+              <span><i class="fa fa-star"></i></span>
+            </div>
+            <div *ngFor="let r of ' '.repeat(5 - aa.instructorRating ).split('')">
+              <span><i class="fa fa-star"></i></span>
+            </div>
+          </div>
+           <p style="color:#0c5460 " >Check your Public Page for comments</p>
         </div>
       </div>
     </div>

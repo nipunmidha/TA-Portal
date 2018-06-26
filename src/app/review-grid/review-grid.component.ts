@@ -67,6 +67,9 @@ export class ReviewGridComponent implements OnInit {
     const ty = {applicant: aa.applicant._id, _id: aa._id, instructorRemarks: this.workingAA.instructorRemarks,
       instructorRating: this.workingAA.instructorRating}
     this.applicationService.reviewApplication(ty)
-      .then(() => this.hide = true );
+      .then(() => {
+        this.findAllApplications();
+        this.hide = true;
+      } );
   }
 }
