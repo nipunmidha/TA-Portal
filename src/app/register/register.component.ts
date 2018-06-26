@@ -33,11 +33,17 @@ export class RegisterComponent implements OnInit {
   showResults;
   addC;
   passmatch;
+  schoolError;
+  emailError;
   register = (reg) => {
     this.passmatch = false;
+    this.schoolError = false;
+    this.emailError = false;
+    if (!reg.email.endsWith(this.user.school.emailDomain)) { this.emailError = true; }
+    if (!this.schoolName) { this.schoolError = true; }
     if (this.user.password !== this.user.confirmPassword ) {
       this.passmatch = true; } else {
-      if (reg.email && reg.password && reg.confirmPassword) {
+      if (reg.email && reg.password && reg.confirmPassword && this.schoolName && !this.schoolError && !this.emailError) {
         if (this.isIns) {
           this.insService.createInstructor(reg)
             .then(res => {

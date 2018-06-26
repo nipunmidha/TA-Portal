@@ -20,8 +20,9 @@
                   <div class="input-group-prepend">
                     <span class="btn btn-dark active"><i class="fa fa-school"></i></span>
                   </div>
-                  <input type="text" class="form-control" [(ngModel)]="schoolName" placeholder="School" required
+                  <input type="text" *ngIf="!addC" class="form-control" [(ngModel)]="schoolName" placeholder="School" required
                      (input)="schoolChange(schoolName)" #school="ngModel" (blur)="clearSchool()"/>
+                  <input type="text" class="form-control" placeholder="School" disabled *ngIf="addC"/>
                 </div>
                 <div *ngIf="showResults">
                   <ul class="list-group">
@@ -31,8 +32,8 @@
                     <button  (click)="addSchool()" class="btn btn-secondary btn-block">Add School</button>
                   </ul>
                 </div>
-                <div *ngIf="school.invalid && (school.dirty || school.touched) && !addC" class="alert alert-danger">
-                  <div *ngIf="school.errors.required  && !addC ">
+                <div *ngIf="schoolError" class="alert alert-danger">
+                  <div *ngIf="schoolError ">
                     School is required.
                   </div>
                 </div>
@@ -62,7 +63,11 @@
                 <input type="text" class="form-control" [(ngModel)]="user.email" placeholder="Email" required
                        #email="ngModel"/>
               </div>
-              <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+
+              <div class="alert alert-danger"  *ngIf="emailError">
+                Registered valid email domain for {{schoolName}} is "<i>{{user.school.emailDomain}}</i>"
+              </div>
+              <div *ngIf="(email.invalid && (email.dirty || email.touched))" class="alert alert-danger">
                 <div *ngIf="email.errors.required">
                   Email is required.
                 </div>
@@ -113,7 +118,7 @@
               <strong>Error!</strong> Both password do not match
             </div>
           <button  class="btn btn-sm btn-primary btn-block" (click)="register(user)"
-                   role="button" [ngClass]="{'disabled': (school.invalid || password.invalid ||
+                   role="button" [ngClass]="{'disabled': (password.invalid ||
                    email.invalid || cpassword.invalid)}">
             <b>Register</b>
           </button>
