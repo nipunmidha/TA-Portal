@@ -2,7 +2,7 @@
 export class SchoolServiceClient {
   url = 'https://taportal-backend.herokuapp.com';
   findSchoolById(schoolId) {
-    return fetch(this.url + '/api/school/' + schoolId)
+    return fetch(this.url + '/api/school/' + schoolId + '/details')
       .then(response => response.json());
   }
   findAllSchools() {

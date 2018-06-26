@@ -17,7 +17,7 @@
   <div class="col-lg-4" *ngFor="let position of positions">
     <div class="card" style="width: 18rem;">
       <div class="card-body">
-        <span ><i class="fa fa-info-circle"></i></span>
+        <span routerLink="/position/{{position._id}}"><i class="fa fa-info-circle"></i></span>
         <h5 class="card-title">{{position.course.courseNumber}} - {{position.course.name}}</h5>
         <h6 class="card-subtitle mb-2 text-muted">{{position.sectionName}} {{position.semester}} {{position.year}}
         </h6>
