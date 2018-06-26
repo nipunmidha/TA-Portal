@@ -19,8 +19,8 @@
       <br/>
       <div *ngIf="!sessionOut">
         <div class="form-group row" >
-          <label class="col-md-4 col-form-label" for="schoolFld">School</label>
-          <div class="col-md-4">
+          <label class="col-sm-2 col-form-label" for="schoolFld">School</label>
+          <div class="col-sm-10">
             <div class="input-group">
               <div class="input-group-addon">
                 <a class="btn btn-dark active">  <i class="fa fa-school"></i>
@@ -35,8 +35,8 @@
         </div>
 
         <div class="form-group row">
-          <label class="col-md-4 col-form-label" for="emailFld">Email Address</label>
-          <div class="col-md-4">
+          <label class="col-sm-2  col-form-label" for="emailFld">Email Address</label>
+          <div class="col-sm-10">
             <div class="input-group">
               <div class="input-group-addon">
                 <a class="btn btn-dark active">  <i class="fa fa-envelope"></i>
@@ -51,8 +51,8 @@
         </div>
 
         <div class="form-group row">
-          <label class="col-md-4 col-form-label" for="firstNameFld">First Name</label>
-          <div class="col-md-4">
+          <label class="col-sm-2 col-form-label" for="firstNameFld">First Name</label>
+          <div class="col-sm-10">
             <div class="input-group">
               <div class="input-group-addon">
                 <a class="btn btn-dark active"> <i class="fa fa-align-justify"></i>
@@ -65,8 +65,8 @@
         </div>
         <!-- Text input-->
         <div class="form-group row">
-          <label class="col-md-4 col-form-label" for="lastNameFld">Last Name</label>
-          <div class="col-md-4">
+          <label class="col-sm-2 col-form-label" for="lastNameFld">Last Name</label>
+          <div class="col-sm-10">
             <div class="input-group">
               <div class="input-group-addon">
                 <a class="btn btn-dark active">  <i class="fa fa-align-justify"></i>
@@ -78,15 +78,15 @@
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-md-4 col-form-label" for="resumeFld">Resume</label>
-          <div class="col-md-4">
+          <label class="col-sm-2 col-form-label" for="resumeFld">Resume</label>
+          <div class="col-sm-10">
               <textarea id="resumeFld" [(ngModel)]="user.resume" type="textarea" name="Resume"
                         placeholder="Resume" class="form-control input-md" rows="6"></textarea>
         </div>
         </div>
         <div class="form-group row">
-          <label class="col-md-4 control-label" ></label>
-          <div class="col-md-4">
+          <label class="col-sm-2 control-label" ></label>
+          <div class="col-sm-10">
             <a (click)="update(user)" id="updatebtn" type="button" class="btn btn-success btn-block">Update</a>
             <a  (click)="logout()" class="btn btn-danger btn-block"
                 type="button">Logout</a>
@@ -107,23 +107,23 @@
 
 
         <div class="form-group row" >
-          <label class="col-md-4 col-form-label">School:</label>
-          <div class="dis col-md-4 col-form-label">
+          <label class="col-sm-2 col-form-label">School:</label>
+          <div class="dis col-sm-10 col-form-label">
             <h6>{{user.school.name}}</h6>
           </div>
         </div>
 
         <div class="form-group row">
-          <label class="col-md-4 col-form-label" for="emailFld">Email Address:</label>
-          <div class="dis col-md-4 col-form-label">
+          <label class="col-sm-2 col-form-label" for="emailFld">Email Address:</label>
+          <div class="dis col-sm-10 col-form-label">
             <h6>{{user.email}}</h6>
           </div>
         </div>
 
         <div class="form-group row">
-          <label class="col-md-4 col-form-label" for="resumeFld"></label>
-          <div class="col-md-4">
-              <textarea disabled [(ngModel)]="user.resume" type="textarea" name="Resume"
+          <label class="col-sm-2 col-form-label" for="resumeFld"></label>
+          <div class="col-sm-10">
+              <textarea style="overflow:auto;resize:none;" disabled [(ngModel)]="user.resume" type="textarea" name="Resume"
                         placeholder="Resume" class="form-control input-md" rows="6"></textarea>
           </div>
         </div>
@@ -144,7 +144,7 @@
                   <span><i class="fa fa-star"></i></span>
                 </div>
               </div>
-              <textarea style="overflow:auto;resize:none; margin: 10px; background: #9fcdff" input="textarea" disabled [(ngModel)] = "aa.instructorRemarks" placeholder="Comments"
+              <textarea style="overflow:auto;resize:none; margin: 10px; background: #e1b7b7; padding: 10px" input="textarea" disabled [(ngModel)] = "aa.instructorRemarks" placeholder="Comments"
                         name="remarks" rows="5" cols="40"></textarea>
             </li>
           </ul>

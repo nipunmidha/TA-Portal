@@ -1,5 +1,5 @@
 export class CourseServiceClient {
-  url = 'http://localhost:3000';
+  url = 'https://taportal-backend.herokuapp.com';
   findCourseById(courseId) {
     return fetch(this.url + '/api/course/' + courseId)
       .then(response => response.json());

@@ -1,6 +1,6 @@
 
 export class ApplicationServiceClient {
-  url = 'http://localhost:3000';
+  url = 'https://taportal-backend.herokuapp.com';
   // findPositionById(id) {
   //   return fetch(this.url + '/api/ica/' + id + '/details' )
   //     .then(response => response.json());

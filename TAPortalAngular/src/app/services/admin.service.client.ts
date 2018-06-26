@@ -1,6 +1,6 @@
 
 export class AdminServiceClient {
-  url = 'http://localhost:3000';
+  url = 'https://taportal-backend.herokuapp.com';
   createAdmin(instructor) {
     return fetch(this.url + '/api/admin/', {
       method: 'post',

@@ -1,6 +1,6 @@
 
 export class InstructorServiceClient {
-  url = 'http://localhost:3000';
+  url = 'https://taportal-backend.herokuapp.com';
   findUserById(userId) {
     return fetch(this.url + '/api/user/' + userId)
       .then(response => response.json());

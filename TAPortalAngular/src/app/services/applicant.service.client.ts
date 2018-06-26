@@ -1,5 +1,5 @@
 export class ApplicantServiceClient {
-  url = 'http://localhost:3000';
+  url = 'https://taportal-backend.herokuapp.com';
   findUserById(userId) {
     return fetch(this.url + '/api/applicant/' + userId + '/profile')
       .then(response => {return response.json(); } );
