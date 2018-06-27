@@ -39,7 +39,8 @@
 
 .nav-tabs{
   font-size: large;
-  margin-left: 65px;
+  /*margin-left: 65px;*/
+  justify-content: center;
   font-weight: bold;
 }
 .nav-tabs a{
