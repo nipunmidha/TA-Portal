@@ -5,8 +5,8 @@
   <li class="list-group-item" *ngFor="let aa of hiredAppplications">
    <div class="box">
       {{aa.applicant.firstName}} {{aa.applicant.lastName}}
-      <span class="float-right" *ngIf="aa._id !== aaSelected" (click)="selectAA(aa)">
-        <i class="fa fa-angle-double-down" ></i></span>
+      <span class="float-right cli" *ngIf="aa._id !== aaSelected" (click)="selectAA(aa)">
+        <i class="fa fa-angle-double-down cli" ></i></span>
       <span class="float-right" *ngIf="aa._id === aaSelected"(click)="unSelectAA()"><i class="fa fa-angle-double-up">
           </i></span>
    </div>

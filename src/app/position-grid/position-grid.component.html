@@ -1,3 +1,4 @@
+<div class="container">
 <h2>All Positions</h2>
 <ul class="nav nav-tabs" *ngIf="isAppli">
   <li class="nav-item">
@@ -14,7 +15,7 @@
 <br/>
 <div class="bg" *ngIf="!isAppli || (isAppli && notAppliedPos)">
 <div class="row">
-  <div class="col-lg-4" *ngFor="let position of positions">
+  <div class="col-md-6 col-lg-4" *ngFor="let position of positions">
     <div class="card" style="width: 18rem;">
       <div class="card-body">
         <span routerLink="/position/{{position._id}}"><i class="fa fa-info-circle"></i></span>
@@ -22,20 +23,20 @@
         <h6 class="card-subtitle mb-2 text-muted">{{position.sectionName}} {{position.semester}} {{position.year}}
         </h6>
         <div class="form-group row">
-          <div class="col-md-6">Instructor: </div>
-          <div class="col-md-6">{{position.instructor.firstName}} {{position.instructor.lastName}}</div>
+          <div class="col-6">Instructor: </div>
+          <div class="col-6">{{position.instructor.firstName}} {{position.instructor.lastName}}</div>
         </div>
         <div class="form-group row">
-          <div class="col-md-6">Class Strength: </div>
-          <div class="col-md-6">{{position.classStrength}} </div>
+          <div class="col-6">Class Strength: </div>
+          <div class="col-6">{{position.classStrength}} </div>
         </div>
         <div class="form-group row">
-          <div class="col-md-6">No Of TA's: </div>
-          <div class="col-md-6">{{position.noOfTa}} </div>
+          <div class="col-6">No Of TA's: </div>
+          <div class="col-6">{{position.noOfTa}} </div>
         </div>
         <div class="form-group row">
-          <div class="col-md-6">TA's Hired: </div>
-          <div class="col-md-6">{{position.taHired  }} </div>
+          <div class="col-6">TA's Hired: </div>
+          <div class="col-6">{{position.taHired  }} </div>
         </div>
         <!--<div class="form-group row">-->
           <!--<div class="col-md-6">Status: </div>-->
@@ -69,30 +70,30 @@
 
 <div class="bg" *ngIf="(isAppli && appliedPos)">
   <div class="row">
-    <div class="col-lg-4" *ngFor="let position of appliedPositions">
+    <div class="col-md-6 col-lg-4" *ngFor="let position of appliedPositions">
       <div class="card" style="width: 18rem;">
         <div class="card-body">
           <span routerLink="/position/{{position._id}}"><i class="fa fa-info-circle"></i></span>
           <h5 class="card-title">{{position.course.courseNumber}} - {{position.course.name}}</h5>
           <h6 class="card-subtitle mb-2 text-muted">{{position.sectionName}} {{position.semester}} {{position.year}}</h6>
           <div class="form-group row">
-            <div class="col-md-6">Instructor: </div>
-            <div class="col-md-6">{{position.instructor.firstName}} {{position.instructor.lastName}}</div>
+            <div class="col-6">Instructor: </div>
+            <div class="col-6">{{position.instructor.firstName}} {{position.instructor.lastName}}</div>
           </div>
           <div class="form-group row">
-            <div class="col-md-6">Class Strength: </div>
-            <div class="col-md-6">{{position.classStrength}} </div>
+            <div class="col-6">Class Strength: </div>
+            <div class="col-6">{{position.classStrength}} </div>
           </div>
           <div class="form-group row">
-            <div class="col-md-6">No Of TA's: </div>
-            <div class="col-md-6">{{position.noOfTa}} </div>
+            <div class="col-6">No Of TA's: </div>
+            <div class="col-6">{{position.noOfTa}} </div>
           </div>
           <div class="form-group row">
-            <div class="col-md-6">TA's Hired: </div>
-            <div class="col-md-6">{{position.taHired  }} </div>
+            <div class="col-6">TA's Hired: </div>
+            <div class="col-6">{{position.taHired  }} </div>
           </div>
           <!--<div class="form-group row">-->
-            <!--<div class="col-md-6">Status: </div>-->
+            <!--<div class="col-6">Status: </div>-->
             <!--<div class="col-md-6" *ngIf="position.postionsFilled">Closed</div>-->
             <!--<div class="col-md-6" *ngIf="!position.postionsFilled">Open</div>-->
           <!--</div>-->
@@ -105,7 +106,7 @@
 
 <div class="bg" *ngIf="(isAppli && hiredPos)">
   <div class="row">
-    <div class="col-lg-4" *ngFor="let aa of hiredAA">
+    <div class="col-md-6 col-lg-4" *ngFor="let aa of hiredAA">
       <div class="card" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title">{{aa.position.sectionName}} {{aa.position.semester}}
@@ -133,4 +134,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>

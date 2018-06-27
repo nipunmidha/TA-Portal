@@ -4,10 +4,10 @@
 }
 .form-area
 {
-  background-color: #e8f2fc;
+  background-color: white;
   padding: 10px 40px 60px;
   margin: 10px 0px 60px;
-  border: 1px solid GREY;
+  border: 2px solid #c6c8ca;
 }
 .col-md-4{
   text-align: center;
